@@ -1,0 +1,35 @@
+# PlisioAPIClient::OperationDto
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**user_id** | **String** | Profile ID | [optional] 
+**shop_id** | **String** | Shop ID | [optional] 
+**type** | **String** | cash_in, cash_out, mass_cash_out, invoice | [optional] 
+**status** | **String** | pending, completed, error, new, expired, mismatch, cancelled | [optional] 
+**pending_sum** | **String** | unconfirmed amount (mempool) | [optional] 
+**psys_cid** | **String** | ID column from https://plisio.net/documentation/appendices/supported-cryptocurrencies | [optional] 
+**currency** | **String** | Code column from https://plisio.net/documentation/appendices/supported-cryptocurrencies | [optional] 
+**source_currency** | **String** | fiat currency - USD by default or source_currency was set | [optional] 
+**source_rate** | **String** | Exchange rate from the “psys_cid” to the “source_currency” at the moment of transfer | [optional] 
+**fee** | **String** | transaction fee stated in the transfer | [optional] 
+**wallet_hash** | **String** | destination hash (type&#x3D;cash_out) or invoice hash | [optional] 
+**sendmany** | **Array&lt;String&gt;** | Pairs of hashes and values (type&#x3D;mass_cash_out) | [optional] 
+**params** | [**OperationParamsDto**](OperationParamsDto.md) |  | [optional] 
+**expire_at_utc** | **Integer** | timestamp in UTC timezone; it may need to be divided by 1000 | [optional] 
+**created_at_utc** | **Integer** | timestamp in the UTC timezone; it may need to be divided by 1000 | [optional] 
+**amount** | **String** | amount received/transferred by an operation (invoice, cash-in/cash-out) | [optional] 
+**sum** | **String** | Invoice: params.amount + Plisio commission (if customer pays commission) or params.amount (if merchant pays commission) Cash-out: transfer amount + network fee Cash-in: received amount | [optional] 
+**commission** | **String** | Plisio commission | [optional] 
+**tx_url** | **String** | link to the cryptocurrency block explorer | [optional] 
+**tx_id** | **Array&lt;String&gt;** | array of transaction ids | [optional] 
+**id** | **String** | internal Plisio operation ID | [optional] 
+**actual_sum** | **String** | Real incoming amount | [optional] 
+**actual_commission** | **String** | Plisio commission taken | [optional] 
+**actual_fee** | **String** | Network fee (move invoice to wallet) | [optional] 
+**actual_invoice_sum** | **String** | actual_sum - actual_commis_sim - actual_fee | [optional] 
+**tx** | **Array&lt;Object&gt;** | array of transaction payment items | [optional] 
+**confirmations** | **Integer** | Number of confirmations of this transaction. We don&#x27;t update confirmation after operation is confirmed | [optional] 
+**status_code** | **Integer** | Status code | [optional] 
+**parent_id** | **String** | ID of parent invoice | [optional] 
+
